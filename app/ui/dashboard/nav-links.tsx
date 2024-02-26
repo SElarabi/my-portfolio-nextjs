@@ -14,13 +14,14 @@ import clsx from 'clsx';
 const links = [
 	{ name: 'Home', href: '/dashboard', icon: HomeIcon },
 	{
-		name: 'About',
-		href: '/dashboard/about',
+		name: 'About Me',
+		href: '/dashboard/about_me',
 		icon: DocumentIcon,
 	},
 	{
 		name: 'Projects',
-		href: 'https://selarabi.github.io/Portfolio/projects.html',
+		href: '/dashboard/applications',
+		// https://selarabi.github.io/Portfolio/projects.html
 		icon: TrophyIcon,
 	},
 ];
