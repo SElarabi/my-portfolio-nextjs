@@ -10,13 +10,6 @@ export default function Intro() {
 			<div className='container text-center'>
 				{/* <!-- about wrapper --> */}
 				<div className={styles['about']}>
-					<div className={styles['about-img-holder']}>
-						<img
-							src='/profile01.JPG'
-							className={styles[`about-img`]}
-							alt='my_Pic'
-						/>
-					</div>
 					<div className={styles['about-caption']}>
 						<h2 className={`${styles['section-title mb-3']} underline`}>About Me</h2>
 						<p className={`${lusitana.className} mb-2 text-lg tracking-wide`}>

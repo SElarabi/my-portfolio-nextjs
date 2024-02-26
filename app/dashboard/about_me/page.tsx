@@ -1,10 +1,10 @@
 /** @format */
 import Skills from '@/app/ui/dashboard/skills';
-
+import IntroHeader from '@/app/ui/dashboard/intro-header';
 export default function Aboutme() {
 	return (
-		<div className='container mx-auto px-4'>
-			<Skills />;
+		<div>
+			<IntroHeader />
 		</div>
 	);
 }

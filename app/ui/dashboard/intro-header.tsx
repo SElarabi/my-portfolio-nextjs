@@ -11,6 +11,13 @@ export default function IntroHeader() {
 					<h1 className={styles[`header-title`]}>
 						{/* - title */}
 						<span className={styles.up}>HI!</span>
+						<div className={styles['about-img-holder']}>
+							<img
+								src='/fse_profile01.png'
+								className={`${styles[`about-img`]} rounded-full`}
+								alt='my_Pic'
+							/>
+						</div>
 						<span className={styles.down}>I am Eddie&nbsp;LARABI</span>
 						{/* prevent a line break between "Eddie" and "LARABI" when the viewport is
 						flexed. */}
