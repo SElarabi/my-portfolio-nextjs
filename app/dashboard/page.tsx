@@ -17,21 +17,21 @@ export default function Page() {
 			<div className=' grid grid-cols-3 gap-6 grid-flow-row   '>
 				{/* Field service Engineering */}
 				<Portfoliocards
-					title='Field&nbsp;Service&nbsp;Engineering'
+					title='Field Service Engineering'
 					image='/imgs/web_dev_FSE.jpg'
-					fieldTitle='Instrumentation&nbsp;&&nbsp; Automation'
+					fieldTitle='Instrumentation Automation'
 					customRef='/dashboard/about_me'
 				/>
 				{/* Software Engineering */}
 				<Portfoliocards
-					title='Software&nbsp;Engineering'
+					title='Software Engineering'
 					fieldTitle='FULL Stack Web Development with MERN'
 					image='/imgs/web_dev_SOFTWARE.jpg'
 					customRef='#'
 				/>
 				{/* Retail Trading and Stock market */}
 				<Portfoliocards
-					title='Retail&nbsp;Trading'
+					title='Retail Trading'
 					image='/imgs/web_dev_STOCKS.jpg'
 					fieldTitle='Stocks & Crypto'
 					customRef='#'
