@@ -1,0 +1,31 @@
+/** @format */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @import url('https://fonts.googleapis.com/css?family=Baloo+Paaji|Open+Sans:300,300i,400,400i,600,600i,700,700i'); */
+
+:root {
+	--foreground-rgb: 0, 0%, 100%;
+	--background-start-hsl: 205, 14%, 86%; /* Hue: 205, Saturation: 14%, Lightness: 86% */
+	--background-end-hsl: 0, 0%, 0%; /* Hue: 0, Saturation: 0%, Lightness: 0% (black) */
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-hsl: 0, 0%, 100%; /* Hue: 0, Saturation: 0%, Lightness: 100% (white) */
+		--background-start-hsl: 0, 0%, 0%; /* Hue: 0, Saturation: 0%, Lightness: 0% (black) */
+		--background-end-hsl: 0, 0%, 0%; /* Hue: 0, Saturation: 0%, Lightness: 0% (black) */
+	}
+}
+
+body {
+	color: hsl(49, 38%, 89%); /* Set text color to white for better visibility */
+	background: hsl(var(--background-end-hsl));
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
