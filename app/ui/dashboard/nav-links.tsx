@@ -15,7 +15,7 @@ const links = [
 	{ name: 'Home', href: '/dashboard', icon: HomeIcon },
 	{
 		name: 'Contact Me',
-		href: '/dashboard/about_me',
+		href: '/dashboard/contact_me',
 		icon: DocumentIcon,
 	},
 	{
