@@ -1,11 +1,31 @@
 /** @format */
 
-import ContactMe from '@/app/ui/dashboard/contact_me';
+import Contacttag from '@/app/ui/dashboard/contact-tag';
+
+import styles from '@/app/ui/home.module.css';
+import ContactForm from '@/app/ui/dashboard/contact-form';
 
 export default function Page() {
 	return (
 		<>
-			<ContactMe />
+			<div className='grid gap-4 mt-20 ml-20'>
+				<img
+					src='/fse_profile01.png'
+					className={`${styles[`about-img`]} rounded-full size-24`}
+					alt='my_Pic'
+				></img>
+				<p>
+					Feel free to explore my GitHub repositories and connect with me on
+					LinkedIn. If you have any questions or would like to reach out, please
+					don't hesitate to send me a message. <br />
+					Thank you {'😊'}
+				</p>
+
+				<Contacttag />
+			</div>
+			<div className='flex items-center mt-20   '>
+				<ContactForm />
+			</div>
 		</>
 	);
 }

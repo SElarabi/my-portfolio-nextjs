@@ -15,8 +15,8 @@ const PortfolioCards: React.FC<PortfolioCardProps> = ({
 	customRef = '/app/about_me',
 }) => {
 	return (
-		<div className={`  ${lusitana.className} ${styles.glow} max-w-[100%]  `}>
-			<h4 className='mb-4'>{title}</h4>
+		<div className={`  ${lusitana.className} ${styles.glow}`}>
+			<h4 className='truncate mb-4 '>{title}</h4>
 			<Link
 				href={customRef}
 				className={styles['portfolio-card']}
@@ -30,7 +30,7 @@ const PortfolioCards: React.FC<PortfolioCardProps> = ({
 				<span className={styles['portfolio-card-overlay']}>
 					<span className={styles['portfolio-card-caption']}>
 						<h4>{title}</h4>
-						<p className={`${styles['glow-blue']} font-weight-normal`}>
+						<p className={`${styles['glow-blue']} font-weight-normal `}>
 							{fieldTitle}
 						</p>
 					</span>

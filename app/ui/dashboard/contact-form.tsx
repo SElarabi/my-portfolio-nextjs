@@ -13,8 +13,9 @@ import {
 	PaperAirplaneIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
+import Contacttag from './contact-tag';
 
-export default function ContactMe() {
+export default function ContactForm() {
 	function SendButton() {
 		const { pending } = useFormStatus();
 		return (
@@ -28,29 +29,15 @@ export default function ContactMe() {
 		);
 	}
 	return (
-		<div>
-			<header className={styles.header}>
-				<div className={styles.overlay}></div>
-				<div className={styles[`header-content`]}>
-					{/* - title */}
-
-					<div className={styles['about-img-holder']}>
-						<img
-							src='/fse_profile01.png'
-							className={`${styles[`about-img`]} rounded-full`}
-							alt='my_Pic'
-						/>
-					</div>
-				</div>
-			</header>
+		<>
 			{/* FORM SECTION */}
-			<section className='section'>
+			<>
 				<div className='container text-center underline'>
 					<h6 className='section-title mb-5'>Send Me a Message</h6>
 
 					{/* Contact form */}
 					<div className={`${lusitana.className} flex flex-col gap-8`}>
-						<section className='section  '>
+						<section className='section text-start '>
 							{/* <!-- contact form --> */}
 							<form
 								action='submit'
@@ -147,7 +134,7 @@ export default function ContactMe() {
 						Your message has been sent successfully.
 					</div>
 				</div>
-			</section>
-		</div>
+			</>
+		</>
 	);
 }

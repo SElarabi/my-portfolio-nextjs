@@ -7,26 +7,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface SocialCardProps {
 	icon_name: string;
 	customRef: string;
+	name: string;
 }
 
 const SocialCard: React.FC<SocialCardProps> = ({
-	icon_name = 'faCoffee',
+	icon_name = '',
 	customRef = '#',
+	name,
 }) => {
 	return (
-		<div className='col-md-4 shadow-lg'>
-			<h3 className='card-title my-5'>{icon_name}</h3>
-
-			<p className='card-text'>
-				<a
-					href={customRef}
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					{customRef}
-				</a>
-			</p>
-		</div>
+		<h3 className='text-red-300 focus:border-blue-400 visited:text-blue-600 '>
+			<Link
+				href={customRef}
+				target='_blank'
+			>
+				{icon_name}
+			</Link>
+		</h3>
 	);
 };
 
