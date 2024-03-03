@@ -1,11 +1,11 @@
 /** @format */
 
-// import DisplayUserInput from '@/app/user-input';
-import StatefulForm from '@/app/ui/incerement';
+import DisplayUserInput from '@/app/user-input';
+
 export default function Page() {
 	return (
 		<div>
-			<StatefulForm />
+			<DisplayUserInput />
 		</div>
 	);
 }
