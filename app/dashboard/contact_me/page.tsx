@@ -16,8 +16,10 @@ export default function Page() {
 				></img>
 				<p>
 					Feel free to explore my GitHub repositories and connect with me on
-					LinkedIn. If you have any questions or would like to reach out, please
-					don't hesitate to send me a message. <br />
+					LinkedIn.
+					<br />
+					If you have any questions or would like to reach out, please don't hesitate
+					to send me a message. <br />
 					Thank you {'😊'}
 				</p>
 

@@ -1,14 +1,11 @@
 /** @format */
 
-import Contacttag from '@/app/ui/dashboard/contact-tag';
-import PortfolioCards from '@/app/ui/dashboard/portfolio-cards';
+import DisplayUserInput from '@/app/user-input';
 
 export default function Page() {
 	return (
-		<>
-			<div className='grid '>
-				<Contacttag />
-			</div>
-		</>
+		<div>
+			<DisplayUserInput />
+		</div>
 	);
 }
