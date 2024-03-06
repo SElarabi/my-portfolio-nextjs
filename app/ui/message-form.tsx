@@ -16,6 +16,7 @@ import { lusitana } from '@/app/ui/fonts';
 import { Button } from '@/app/ui/button';
 
 import { sendMessage } from '@/app/lib/SendMessage';
+import { Alert } from '@/app/ui/alert';
 
 const defaultValues = {
 	user_name: '',
@@ -32,17 +33,18 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>;
 
 export default function MessageForm() {
+	const defaultSendStatus = { success: false, error: '', message: '' };
 	const formRef = useRef<HTMLFormElement>(null);
 	const [submissionStatus, setSubmissionStatus] = useState<{
 		success: boolean;
 		error: string;
-	}>({ success: false, error: '' });
+		message: string;
+	}>(defaultSendStatus);
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-		getFieldState,
-		setError,
+		reset,
 	} = useForm<FormSchema>({
 		defaultValues,
 		resolver: zodResolver(formSchema),
@@ -50,29 +52,69 @@ export default function MessageForm() {
 
 	const sendEmail: SubmitHandler<FormSchema> = async (data: FormSchema) => {
 		// Reset the submission status
-		setSubmissionStatus({ success: false, error: '' });
+		setSubmissionStatus(defaultSendStatus);
 		// wait for submission return
 		try {
 			let sentStatus = await sendMessage(formRef);
 			// Update the submission status based on the result
-			setSubmissionStatus(sentStatus);
-			// reset form when success is true
+			setSubmissionStatus((prev) => sentStatus);
+			// reset form when success is true and set display success message in timer
+			if (sentStatus.success) {
+				reset(defaultValues);
+				setTimeout(() => {
+					setSubmissionStatus(defaultSendStatus);
+				}, 3000);
+			}
 			console.log('sentStatus:', sentStatus);
 		} catch (error) {
 			console.error('Error sending email:', error);
 			// Update the submission status in case of an error
-			setSubmissionStatus({ success: false, error: 'Error sending email' });
+			setSubmissionStatus({
+				success: false,
+				error: `${error}`,
+				message: submissionStatus.message,
+			});
 		}
+		// reset form when success is true
+		if (submissionStatus.success) reset(defaultValues);
 	};
 
+	useEffect(() => {
+		// reset form when success is true
+		if (submissionStatus.success) {
+			reset(defaultValues);
+			setSubmissionStatus(defaultSendStatus);
+		}
+		console.log('submissionStatus :', submissionStatus);
+	}, []);
+
 	function SendButton() {
+		let isDesabled = false;
+		return (
+			<Button
+				className='mt-4 w-full'
+				type={!submissionStatus.success ? 'submit' : 'reset'}
+				aria-disabled={submissionStatus.success ? 'true' : 'false'}
+				onClick={() => sendEmail}
+			>
+				Send
+				<PaperAirplaneIcon className='ml-auto h-5 w-5 text-gray-50' />
+			</Button>
+		);
+	}
+
+	function ClearFormButton() {
 		return (
 			<Button
 				className='mt-4 w-full'
 				type='submit'
 				aria-disabled={'false'}
+				onClick={() => {
+					reset(defaultValues);
+					setSubmissionStatus(defaultSendStatus);
+				}}
 			>
-				Send
+				CLEAR FORM
 				<PaperAirplaneIcon className='ml-auto h-5 w-5 text-gray-50' />
 			</Button>
 		);
@@ -198,19 +240,28 @@ export default function MessageForm() {
 								</div>
 							</div>
 
-							<SendButton />
+							{!submissionStatus.message ? <SendButton /> : <ClearFormButton />}
 						</form>
 
 						{/* <!-- end of contact form --> */}
 					</section>
 				</div>
 				{submissionStatus.success ? (
-					<div className='text-green-500'>YOUR MESSAGE WAS SENT</div>
+					<Alert
+						type='success'
+						message='YOU MESSAGE WAS SUCCESFULLY SENT, THNAMK YOU FOR YOUR EMAIL MESSAGE'
+					/>
 				) : submissionStatus.error ? (
-					<div className='text-red-500'>{submissionStatus.error}</div>
+					<Alert
+						type='error'
+						message={submissionStatus.error}
+					/>
+				) : submissionStatus.message ? (
+					<Alert
+						type='error'
+						message='There was a connectivity issue while attempting to send your message.'
+					/>
 				) : null}
-
-				{/* Success Message */}
 			</div>
 			{/* <!-- end of send me message section --> */}
 		</>
