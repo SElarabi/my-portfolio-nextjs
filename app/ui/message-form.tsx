@@ -17,6 +17,8 @@ import { Button } from '@/app/ui/button';
 
 import { sendMessage } from '@/app/lib/SendMessage';
 import { Alert } from '@/app/ui/alert';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 const defaultValues = {
 	user_name: '',
@@ -63,7 +65,8 @@ export default function MessageForm() {
 				reset(defaultValues);
 				setTimeout(() => {
 					setSubmissionStatus(defaultSendStatus);
-				}, 3000);
+				}, 5000);
+				// revalidatePath('/dashboard/contact_me');
 			}
 			console.log('sentStatus:', sentStatus);
 		} catch (error) {
@@ -121,149 +124,146 @@ export default function MessageForm() {
 	}
 
 	return (
-		<>
-			{/* FORM SECTION */}
-			<div className='container text-center underline'>
-				<h6 className='section-title mb-5'>Send Me a Message</h6>
+		<div className='container text-center underline w-full'>
+			<h6 className='section-title mb-5'>Send Me a Message</h6>
 
-				{/* Contact form */}
-				<div className={`${lusitana.className} flex flex-col gap-8`}>
-					<section className='section text-start '>
-						{/* <!-- contact form --> */}
-						<form
-							ref={formRef}
-							onSubmit={handleSubmit(sendEmail)}
-							className='space-y-3'
-						>
-							<div className='flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8'>
-								<div className='w-full'>
-									{/* name */}
-									<div>
-										<label
-											className='mb-3 mt-5 block text-xs font-medium text-gray-900'
-											htmlFor='text'
-										>
-											Name
-										</label>
-										<div className='relative'>
-											<input
-												{...register('user_name', {
-													required: 'REQUIRED',
-												})}
-												className='peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-black'
-												id='name'
-												placeholder='Enter your name'
-												aria-describedby='customer-error'
-											/>
-
-											<UserIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
-										</div>
-
-										<div
-											id='customer-error'
-											aria-live='polite'
-											aria-atomic='true'
-										>
-											{errors.user_name && (
-												<p className='mt-2 text-sm text-red-500'>
-													{errors.user_name.message}
-												</p>
-											)}
-										</div>
-
-										<div
-											id='customer-error'
-											aria-live='polite'
-											aria-atomic='true'
-										></div>
-									</div>
-
-									{/* email */}
-									<div>
-										<label
-											className='mb-3 mt-5 block text-xs font-medium text-gray-900 '
-											htmlFor='email'
-										>
-											Email
-										</label>
-
-										<div className='relative'>
-											<AtSymbolIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
-											<input
-												{...register('user_email', {
-													required: true,
-												})}
-												className='peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-black'
-												id='email'
-												placeholder='you@example.com'
-												aria-describedby='customer-error'
-											/>
-										</div>
-										<div
-											id='customer-error'
-											aria-live='polite'
-											aria-atomic='true'
-										>
-											{errors.user_email && (
-												<p className='mt-2 text-sm text-red-500'>
-													{errors.user_email.message}
-												</p>
-											)}
-										</div>
-									</div>
-									{/* text area */}
-
+			{/* Contact form */}
+			<div className={`${lusitana.className} flex flex-col gap-8`}>
+				<section className='section text-start '>
+					{/* <!-- contact form --> */}
+					<form
+						ref={formRef}
+						onSubmit={handleSubmit(sendEmail)}
+						className='space-y-3'
+					>
+						<div className='flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8'>
+							<div className='w-full'>
+								{/* name */}
+								<div>
 									<label
 										className='mb-3 mt-5 block text-xs font-medium text-gray-900'
-										htmlFor='textarea'
+										htmlFor='text'
 									>
-										Message
+										Name
+									</label>
+									<div className='relative'>
+										<input
+											{...register('user_name', {
+												required: 'REQUIRED',
+											})}
+											className='peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-black'
+											id='name'
+											placeholder='Enter your name'
+											aria-describedby='customer-error'
+										/>
+
+										<UserIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
+									</div>
+
+									<div
+										id='customer-error'
+										aria-live='polite'
+										aria-atomic='true'
+									>
+										{errors.user_name && (
+											<p className='mt-2 text-sm text-red-500'>
+												{errors.user_name.message}
+											</p>
+										)}
+									</div>
+
+									<div
+										id='customer-error'
+										aria-live='polite'
+										aria-atomic='true'
+									></div>
+								</div>
+
+								{/* email */}
+								<div>
+									<label
+										className='mb-3 mt-5 block text-xs font-medium text-gray-900 '
+										htmlFor='email'
+									>
+										Email
 									</label>
 
 									<div className='relative'>
-										<PencilIcon className='pointer-events-none absolute left-3 top-5 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
-										<textarea
-											{...register('message', {
+										<AtSymbolIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
+										<input
+											{...register('user_email', {
 												required: true,
 											})}
-											className='peer block p-2.5 w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-gray-900 bg-gray-50'
-											id='textarea'
-											name='message'
-											rows='16'
-											placeholder='Write your message here...'
+											className='peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-black'
+											id='email'
+											placeholder='you@example.com'
 											aria-describedby='customer-error'
-										></textarea>
-										{errors.message && (
-											<p className='mt-2 text-sm text-red-500'>{errors.message.message}</p>
+										/>
+									</div>
+									<div
+										id='customer-error'
+										aria-live='polite'
+										aria-atomic='true'
+									>
+										{errors.user_email && (
+											<p className='mt-2 text-sm text-red-500'>
+												{errors.user_email.message}
+											</p>
 										)}
 									</div>
 								</div>
+								{/* text area */}
+
+								<label
+									className='mb-3 mt-5 block text-xs font-medium text-gray-900'
+									htmlFor='textarea'
+								>
+									Message
+								</label>
+
+								<div className='relative'>
+									<PencilIcon className='pointer-events-none absolute left-3 top-5 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
+									<textarea
+										{...register('message', {
+											required: true,
+										})}
+										className='peer block p-2.5 w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-gray-900 bg-gray-50'
+										id='textarea'
+										name='message'
+										rows='16'
+										placeholder='Write your message here...'
+										aria-describedby='customer-error'
+									></textarea>
+									{errors.message && (
+										<p className='mt-2 text-sm text-red-500'>{errors.message.message}</p>
+									)}
+								</div>
 							</div>
+						</div>
 
-							{!submissionStatus.message ? <SendButton /> : <ClearFormButton />}
-						</form>
+						{!submissionStatus.message ? <SendButton /> : <ClearFormButton />}
+					</form>
 
-						{/* <!-- end of contact form --> */}
-					</section>
-				</div>
-				{submissionStatus.success ? (
-					<Alert
-						type='success'
-						message='YOU MESSAGE WAS SUCCESFULLY SENT, THNAMK YOU FOR YOUR EMAIL MESSAGE'
-					/>
-				) : submissionStatus.error ? (
-					<Alert
-						type='error'
-						message={submissionStatus.error}
-					/>
-				) : submissionStatus.message ? (
-					<Alert
-						type='error'
-						message='There was a connectivity issue while attempting to send your message.'
-					/>
-				) : null}
+					{/* <!-- end of contact form --> */}
+				</section>
 			</div>
-			{/* <!-- end of send me message section --> */}
-		</>
+			{submissionStatus.success ? (
+				<Alert
+					type='success'
+					message='YOU MESSAGE WAS SUCCESFULLY SENT, THNAMK YOU FOR YOUR EMAIL MESSAGE'
+				/>
+			) : submissionStatus.error ? (
+				<Alert
+					type='error'
+					message={submissionStatus.error}
+				/>
+			) : submissionStatus.message ? (
+				<Alert
+					type='error'
+					message='There was a connectivity issue while attempting to send your message.'
+				/>
+			) : null}
+		</div>
+		// {/* <!-- end of send me message section --> */}
 	);
 }

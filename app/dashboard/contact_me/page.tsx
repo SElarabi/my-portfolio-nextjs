@@ -1,6 +1,6 @@
 /** @format */
 
-import Contacttag from '@/app/ui/dashboard/contact-tag';
+import ContactTag from '@/app/ui/dashboard/contact-tag';
 
 import styles from '@/app/ui/home.module.css';
 import MessageForm from '@/app/ui/message-form';
@@ -22,8 +22,9 @@ export default function Page() {
 					to send me a message. <br />
 					Thank you {'😊'}
 				</p>
-
-				<Contacttag />
+				<div className='grid '>
+					<ContactTag />
+				</div>
 			</div>
 			<div className='flex items-center mt-20   '>
 				<MessageForm />

@@ -7,7 +7,7 @@ import PortfolioCards from '@/app/ui/dashboard/portfolio-cards';
 
 export default function Page() {
 	return (
-		<>
+		<div>
 			<IntroHeader />
 			<div className='mt-8'>
 				<Intro />
@@ -36,7 +36,7 @@ export default function Page() {
 					customRef='#'
 				/>
 			</div>
-		</>
+		</div>
 	);
 }
 // {
