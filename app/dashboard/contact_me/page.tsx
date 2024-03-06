@@ -3,7 +3,7 @@
 import Contacttag from '@/app/ui/dashboard/contact-tag';
 
 import styles from '@/app/ui/home.module.css';
-import ContactForm from '@/app/ui/dashboard/contact-form';
+import MessageForm from '@/app/ui/message-form';
 
 export default function Page() {
 	return (
@@ -26,7 +26,7 @@ export default function Page() {
 				<Contacttag />
 			</div>
 			<div className='flex items-center mt-20   '>
-				<ContactForm />
+				<MessageForm />
 			</div>
 		</>
 	);

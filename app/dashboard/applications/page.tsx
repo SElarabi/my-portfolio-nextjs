@@ -1,11 +1,11 @@
 /** @format */
 
-import DisplayUserInput from '@/app/user-input';
+import MessageForm from '@/app/ui/message-form';
 
 export default function Page() {
 	return (
 		<div>
-			<DisplayUserInput />
+			<MessageForm />
 		</div>
 	);
 }
