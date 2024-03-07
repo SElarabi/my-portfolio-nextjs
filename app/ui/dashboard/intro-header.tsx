@@ -5,7 +5,7 @@ export default function IntroHeader() {
 	return (
 		<div>
 			<header className={styles.header}>
-				<div className={styles.overlay}></div>
+				{/* <div className={styles.overlay}></div> */}
 				<div className={styles[`header-content`]}>
 					{/*  */}
 					<h1 className={styles[`header-title`]}>

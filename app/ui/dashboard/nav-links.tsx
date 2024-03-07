@@ -5,6 +5,11 @@ import {
 	TrophyIcon,
 	HomeIcon,
 	DocumentIcon,
+	ChatBubbleLeftEllipsisIcon,
+	CommandLineIcon,
+	ComputerDesktopIcon,
+	GlobeAltIcon,
+	WrenchScrewdriverIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -16,13 +21,25 @@ const links = [
 	{
 		name: 'Contact Me',
 		href: '/dashboard/contact_me',
-		icon: DocumentIcon,
+		icon: ChatBubbleLeftEllipsisIcon,
+	},
+	{
+		name: 'Software ',
+		href: '/dashboard/software',
+		// https://selarabi.github.io/Portfolio/projects.html
+		icon: ComputerDesktopIcon,
+	},
+	{
+		name: 'Field Service',
+		href: '/dashboard/fieldservice',
+		// https://selarabi.github.io/Portfolio/projects.html
+		icon: WrenchScrewdriverIcon,
 	},
 	{
 		name: 'Projects',
 		href: '/dashboard/applications',
 		// https://selarabi.github.io/Portfolio/projects.html
-		icon: TrophyIcon,
+		icon: GlobeAltIcon,
 	},
 ];
 

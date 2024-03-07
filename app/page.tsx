@@ -3,8 +3,10 @@
 import Link from 'next/link';
 
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { permanentRedirect } from 'next/navigation';
 
 export default function Page() {
+	permanentRedirect('./dashboard');
 	return (
 		<main className='flex min-h-screen flex-col p-6'>
 			<p>HOME PAGE</p>

@@ -19,14 +19,14 @@ export default function Page() {
 					title='Field Service Engineering'
 					image='/imgs/web_dev_FSE.jpg'
 					fieldTitle='Instrumentation Automation'
-					customRef='/dashboard/contact_me/fieldservice'
+					customRef='/dashboard/fieldservice'
 				/>
 				{/* Software Engineering */}
 				<PortfolioCards
 					title='Software Engineering'
 					fieldTitle='FULL Stack Web Development with MERN'
 					image='/imgs/web_dev_SOFTWARE.jpg'
-					customRef='/dashboard/contact_me/software'
+					customRef='/dashboard/software'
 				/>
 				{/* Retail Trading and Stock market */}
 				<PortfolioCards

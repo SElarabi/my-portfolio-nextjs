@@ -63,6 +63,13 @@
 	margin-top: -10px;
 	margin-bottom: 20px;
 }
+.header .header-content .header-subtitle-sm {
+	font-size: calc(10px + (22 - 10) * ((100vw - 300px) / (1800 - 300)));
+	letter-spacing: calc(1px + (7 - 1) * ((100vw - 300px) / (1800 - 300)));
+	opacity: 0.8;
+	margin-top: -10px;
+	margin-bottom: 20px;
+}
 
 .header-title {
 	font-size: 2.4rem;
