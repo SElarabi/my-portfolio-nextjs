@@ -1,8 +1,6 @@
 /** @format */
-'use client';
 
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
+'use server';
 
 import emailjs from '@emailjs/browser';
 import React, { useRef } from 'react';
@@ -15,14 +13,20 @@ export async function sendMessage(
 		error: '',
 		message: '',
 	};
-
+	console.log('SENDING MESSAGE CALL BACK ');
 	const form = formRef as React.RefObject<HTMLFormElement> | null;
 
 	try {
 		if (form && form.current) {
-			await emailjs.sendForm('service_6yfy5fs', 'template_8kijxr3', form.current, {
-				publicKey: 'BepF_3vS7SDG9tMYe',
-			});
+			await emailjs.sendForm(
+				process.env.SERVICE_ID!,
+				process.env.TEMPLATE_ID!,
+				form.current,
+				{
+					// publicKey: 'SLJKHKLJGHKL'!,
+					publicKey: process.env.PUBLIC_KEY!,
+				}
+			);
 
 			State = { ...State, success: true };
 		} else {

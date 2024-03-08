@@ -15,10 +15,10 @@ import * as z from 'zod';
 import { lusitana } from '@/app/ui/fonts';
 import { Button } from '@/app/ui/button';
 
-import { sendMessage } from '@/app/lib/SendMessage';
 import { Alert } from '@/app/ui/alert';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { sendEmailJs } from '../lib/actions';
 
 const defaultValues = {
 	user_name: '',
@@ -33,6 +33,7 @@ const formSchema = z.object({
 	message: z.string().min(6, { message: 'Missing MESSAGE ' }),
 });
 type FormSchema = z.infer<typeof formSchema>;
+// emailjs.init({ publicKey: 'BepF_3vS7SDG9tMYe' });
 
 export default function MessageForm() {
 	const defaultSendStatus = { success: false, error: '', message: '' };
@@ -51,13 +52,14 @@ export default function MessageForm() {
 		defaultValues,
 		resolver: zodResolver(formSchema),
 	});
-
 	const sendEmail: SubmitHandler<FormSchema> = async (data: FormSchema) => {
+		console.log(data);
 		// Reset the submission status
 		setSubmissionStatus(defaultSendStatus);
 		// wait for submission return
+		// let returnStatus = await sendEmailJs(data);
 		try {
-			let sentStatus = await sendMessage(formRef);
+			let sentStatus = await sendEmailJs(data);
 			// Update the submission status based on the result
 			setSubmissionStatus((prev) => sentStatus);
 			// reset form when success is true and set display success message in timer
@@ -98,7 +100,6 @@ export default function MessageForm() {
 				className='mt-4 w-full'
 				type={!submissionStatus.success ? 'submit' : 'reset'}
 				aria-disabled={submissionStatus.success ? 'true' : 'false'}
-				onClick={() => sendEmail}
 			>
 				Send
 				<PaperAirplaneIcon className='ml-auto h-5 w-5 text-gray-50' />
