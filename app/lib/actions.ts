@@ -1,12 +1,6 @@
 /** @format */
 'use server';
 
-import emailjs from '@emailjs/browser';
-import React, { useRef } from 'react';
-
-import { Console } from 'node:console';
-// import axios from 'axios';
-
 const axios = require('axios');
 
 const defaultValues = {
@@ -54,6 +48,7 @@ export async function sendEmailJs(props: TemplateParams) {
 			user_name: templateParams.user_name,
 			user_email: templateParams.user_email,
 		},
+
 		accessToken: process.env.ACCESS_TOKEN,
 	};
 

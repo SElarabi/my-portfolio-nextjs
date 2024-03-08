@@ -24,12 +24,6 @@ export default function Page() {
 
 				<FontAwesomeIcon icon={faScrewdriverWrench} />
 			</div>
-			<h1>
-				The value of customKey is:
-				<p className={` ${styles.glow} underline gap-4`}>
-					{process.env.PUBLIC_PUBLIC_KEY}
-				</p>
-			</h1>
 		</div>
 	);
 }

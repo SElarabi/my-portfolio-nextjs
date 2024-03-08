@@ -1,6 +1,5 @@
 /** @format */
 
-import { lusitana } from '@/app/ui/fonts';
 import Intro from '@/app/ui/dashboard/intro';
 import IntroHeader from '../ui/dashboard/intro-header';
 import PortfolioCards from '@/app/ui/dashboard/portfolio-cards';
@@ -39,6 +38,3 @@ export default function Page() {
 		</div>
 	);
 }
-// {
-/* <div className='flex justify-center items-center flex-col gap-36'></div> */
-// }

@@ -8,16 +8,12 @@ import {
 	PencilIcon,
 	PaperAirplaneIcon,
 } from '@heroicons/react/24/outline';
-
 import { useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { lusitana } from '@/app/ui/fonts';
 import { Button } from '@/app/ui/button';
-
 import { Alert } from '@/app/ui/alert';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 import { sendEmailJs } from '../lib/actions';
 
 const defaultValues = {
@@ -33,7 +29,6 @@ const formSchema = z.object({
 	message: z.string().min(6, { message: 'Missing MESSAGE ' }),
 });
 type FormSchema = z.infer<typeof formSchema>;
-// emailjs.init({ publicKey: 'BepF_3vS7SDG9tMYe' });
 
 export default function MessageForm() {
 	const defaultSendStatus = { success: false, error: '', message: '' };
@@ -68,7 +63,6 @@ export default function MessageForm() {
 				setTimeout(() => {
 					setSubmissionStatus(defaultSendStatus);
 				}, 5000);
-				// revalidatePath('/dashboard/contact_me');
 			}
 			console.log('sentStatus:', sentStatus);
 		} catch (error) {
@@ -134,7 +128,10 @@ export default function MessageForm() {
 					{/* <!-- contact form --> */}
 					<form
 						ref={formRef}
-						onSubmit={handleSubmit(sendEmail)}
+						onSubmit={(e) => {
+							e.preventDefault();
+							handleSubmit(sendEmail)();
+						}}
 						className='space-y-3'
 					>
 						<div className='flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8'>
@@ -231,7 +228,7 @@ export default function MessageForm() {
 										className='peer block p-2.5 w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-gray-900 bg-gray-50'
 										id='textarea'
 										name='message'
-										rows='16'
+										rows={16}
 										placeholder='Write your message here...'
 										aria-describedby='customer-error'
 									></textarea>
@@ -242,7 +239,12 @@ export default function MessageForm() {
 							</div>
 						</div>
 
-						{!submissionStatus.message ? <SendButton /> : <ClearFormButton />}
+						{(!submissionStatus.message && !submissionStatus.success) ||
+						submissionStatus.error ? (
+							<SendButton />
+						) : (
+							<ClearFormButton />
+						)}
 					</form>
 
 					{/* <!-- end of contact form --> */}

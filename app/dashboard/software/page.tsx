@@ -24,10 +24,11 @@ export default function Page() {
 			<div className='  border-solid border-2 border-slate-500 md:max-h-screen '>
 				{/* Use an iframe to embed the webpage */}
 				<iframe
-					src='https://selarabi.github.io/Portfolio/index.html#home' // Replace with the URL of the webpage you want to display
+					// Replace with the URL of the webpage you want to display
+					src='https://selarabi.github.io/Portfolio/index.html#home'
 					title='Webpage Viewer'
 					width='100%'
-					height='760px' // Set the height to 100% of the viewport height
+					height='760px'
 				></iframe>
 			</div>
 		</div>

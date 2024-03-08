@@ -82,8 +82,8 @@ export default function Page() {
 
 				<p>
 					<br />
-					If you have any questions or would like to contact me, do not hesitate to
-					send me a message. <br />
+					If you have any questions or like to contact me, do not hesitate to send me
+					a message. <br />
 					Thank you {'😊'}
 				</p>
 			</div>
