@@ -1,6 +1,7 @@
 /** @format */
 
 import styles from '@/app/ui/home.module.css';
+import Image from 'next/image';
 export default function IntroHeader() {
 	return (
 		<div>
@@ -12,9 +13,11 @@ export default function IntroHeader() {
 						{/* - title */}
 						<span className={styles.up}>HI!</span>
 						<div className={styles['about-img-holder']}>
-							<img
+							<Image
 								src='/fse_profile01.png'
 								className={`${styles[`about-img`]} rounded-full`}
+								width={500}
+								height={500}
 								alt='my_Pic'
 							/>
 						</div>

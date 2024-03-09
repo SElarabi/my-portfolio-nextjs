@@ -3,6 +3,7 @@ import styles from '@/app/ui/home.module.css';
 import { lusitana } from '@/app/ui/fonts';
 import ContactTag from '@/app/ui/dashboard/contact-tag';
 import { mySkills } from './skills';
+import Image from 'next/image';
 
 export default function Page() {
 	return (
@@ -12,11 +13,13 @@ export default function Page() {
 					${styles[`header-subtitle`]} grid gap-4 mt-20 ml-20 w-[75%]`}
 			>
 				<div className={styles[`header-content`]}>
-					<img
+					<Image
 						src='/fse_profile01.png'
 						className={`${styles[`about-img`]} rounded-full size-24`}
+						width={500}
+						height={500}
 						alt='my_Pic'
-					></img>
+					/>
 
 					<p className={`${lusitana.className} mb-2 text-lg tracking-wide`}>
 						Experienced Field Service Engineer with over eighteen years of expertise
