@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			<div className='w-full  flex-none md:w-64'>
 				<SideNav />
 			</div>
-			<div className=' w-[65%] p-4'>{children}</div>
+			<div className=' w-[100%] p-4'>{children}</div>
 		</div>
 	);
 }
