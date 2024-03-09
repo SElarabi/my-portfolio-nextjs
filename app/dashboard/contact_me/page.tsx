@@ -4,16 +4,20 @@ import ContactTag from '@/app/ui/dashboard/contact-tag';
 
 import styles from '@/app/ui/home.module.css';
 import MessageForm from '@/app/ui/message-form';
+import Image from 'next/image';
 
 export default function Page() {
 	return (
 		<>
 			<div className='grid gap-4 mt-20 ml-20'>
-				<img
-					src='/fse_profile01.png'
+				<Image
 					className={`${styles[`about-img`]} rounded-full size-24`}
-					alt='my_Pic'
-				></img>
+					src='/fse_profile01.png'
+					width={500}
+					height={500}
+					alt='Picture of the author'
+				/>
+
 				<p>
 					Feel free to explore my GitHub repositories and connect with me on
 					LinkedIn.
