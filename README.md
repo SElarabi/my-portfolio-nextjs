@@ -2,7 +2,7 @@
 
 # Portfolio
 
-visit site: https://selarabi.github.io/Portfolio/
+visit site: https://my-portfolio-nextjs-chi.vercel.app/dashboard
 
 ## Description
 
