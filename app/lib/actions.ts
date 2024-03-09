@@ -40,16 +40,16 @@ export async function sendEmailJs(props: TemplateParams) {
 	// add PUBLIC to env keys for the server component to see it.
 
 	let postData = {
-		service_id: process.env.SERVICE_ID!,
-		template_id: process.env.TEMPLATE_ID!,
-		user_id: process.env.PUBLIC_KEY!,
+		service_id: process.env.NEXT_PUBLIC_SERVICE_ID!,
+		template_id: process.env.NEXT_PUBLIC_TEMPLATE_ID!,
+		user_id: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
 		template_params: {
 			message: templateParams.message,
 			user_name: templateParams.user_name,
 			user_email: templateParams.user_email,
 		},
 
-		accessToken: process.env.ACCESS_TOKEN,
+		accessToken: process.env.NEXT_PUBLIC_ACCESS_TOKEN,
 	};
 
 	try {
