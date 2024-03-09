@@ -84,7 +84,6 @@ export default function MessageForm() {
 			reset(defaultValues);
 			setSubmissionStatus(defaultSendStatus);
 		}
-		console.log('submissionStatus :', submissionStatus);
 	}, []);
 
 	function SendButton() {

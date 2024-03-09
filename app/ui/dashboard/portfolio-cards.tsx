@@ -2,6 +2,7 @@
 import styles from '@/app/ui/home.module.css';
 import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
+import Image from 'next/image';
 interface PortfolioCardProps {
 	title: string;
 	image: string;
@@ -21,11 +22,13 @@ const PortfolioCards: React.FC<PortfolioCardProps> = ({
 				href={customRef}
 				className={styles['portfolio-card']}
 			>
-				<img
+				<Image
 					src={image}
 					alt={title}
 					className={`${styles['portfolio-card-img']}
 					rounded-lg`}
+					width={500}
+					height={500}
 				/>
 				<span className={styles['portfolio-card-overlay']}>
 					<span className={styles['portfolio-card-caption']}>
