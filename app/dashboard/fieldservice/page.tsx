@@ -47,7 +47,7 @@ export default function Page() {
 						<div
 							className={`${styles[`header-subtitle`]} ${styles.glow} underline gap-4`}
 						>
-							Field Service skills and & Expertise
+							Field Service skills & Expertise
 						</div>
 
 						<ul className={`${styles[`header-subtitle`]} list-disc gap-4 p-4`}>
