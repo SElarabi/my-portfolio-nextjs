@@ -88,7 +88,13 @@ This demo app is hosted with render.com webhosting.It might take little time to 
 					<div
 						className={`${styles[`header-subtitle`]} ${styles.glow} underline gap-4`}
 					>
-						WEB PROJECTS
+						<a
+							className="text-red-200 after:content-['_↗']  hover:bg-sky-700"
+							href='https://selarabi.github.io/Portfolio/projects.html'
+							target='_blank'
+						>
+							WEB PROJECTS
+						</a>
 					</div>
 				</div>
 			</header>
@@ -115,7 +121,7 @@ This demo app is hosted with render.com webhosting.It might take little time to 
 						</li>
 
 						<li className=' flex flex-cols-2 gap-2 '>
-							<span className='flex  bg-slate-800'>
+							<span className='flex  bg-black'>
 								<p
 									className=' text-start gap-4'
 									style={{ flex: '1' }}
