@@ -22,7 +22,7 @@ export default function Page() {
 			githHubLink: 'https://github.com/SElarabi/world-map-encyclopedia-graphQl',
 			websiteLink: 'https://world-map-encyclopedia-graphql.vercel.app/dashboard',
 			projectLogo: '/imgs/world-map.png',
-			description: `This project is a full-stack web application that leverages the power of GraphQL to fetch and display information about countries around the world. The application is built using NextJs and The data is retrieved from a REST API using GraphQL and Apollo.`,
+			description: `This project is a full-stack web application that leverages the power of GraphQL to fetch and display information about countries around the world and link to their geographic coordination. The application is built using NextJs and The data is retrieved from a REST API using GraphQL and Apollo.`,
 		},
 
 		{
